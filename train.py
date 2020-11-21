@@ -321,8 +321,8 @@ def train(args, loader, generator, discriminator, g_optim, d_optim, g_ema, devic
                             normalize=True,
                             range=(-1, 1),
                         )
-                    finally:
-                        print("error occur")
+                    except Exception as e:
+                        print("error occur"+str(e))
                         pass
 
             if i % 10000 == 0:
