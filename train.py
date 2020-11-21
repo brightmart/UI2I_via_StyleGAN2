@@ -322,22 +322,26 @@ def train(args, loader, generator, discriminator, g_optim, d_optim, g_ema, devic
                             range=(-1, 1),
                         )
                     except Exception as e:
-                        print("error occur"+str(e))
+                        print("save image. error occur"+str(e))
                         pass
 
             if i % 10000 == 0:
-                torch.save(
-                    {
-                        "g": g_module.state_dict(),
-                        "d": d_module.state_dict(),
-                        "g_ema": g_ema.state_dict(),
-                        "g_optim": g_optim.state_dict(),
-                        "d_optim": d_optim.state_dict(),
-                        "args": args,
-                        "ada_aug_p": ada_aug_p,
-                    },
-                    f"checkpoint/{str(i).zfill(6)}.pt",
-                )
+                try:
+                    torch.save(
+                        {
+                            "g": g_module.state_dict(),
+                            "d": d_module.state_dict(),
+                            "g_ema": g_ema.state_dict(),
+                            "g_optim": g_optim.state_dict(),
+                            "d_optim": d_optim.state_dict(),
+                            "args": args,
+                            "ada_aug_p": ada_aug_p,
+                        },
+                        f"checkpoint/{str(i).zfill(6)}.pt",
+                      )
+                except Exception as e:
+                        print("save checkpoint.error occur"+str(e))
+                        pass
 
 
 if __name__ == "__main__":
