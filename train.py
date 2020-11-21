@@ -313,13 +313,17 @@ def train(args, loader, generator, discriminator, g_optim, d_optim, g_ema, devic
                 with torch.no_grad():
                     g_ema.eval()
                     sample, _ = g_ema([sample_z])
-                    utils.save_image(
-                        sample,
-                        f"sample/{str(i).zfill(6)}.png",
-                        nrow=int(args.n_sample ** 0.5),
-                        normalize=True,
-                        range=(-1, 1),
-                    )
+                    try:
+                        utils.save_image(
+                            sample,
+                            f"sample/{str(i).zfill(6)}.png",
+                            nrow=int(args.n_sample ** 0.5),
+                            normalize=True,
+                            range=(-1, 1),
+                        )
+                     finally:
+                        print("error occur")
+                        pass
 
             if i % 10000 == 0:
                 torch.save(
