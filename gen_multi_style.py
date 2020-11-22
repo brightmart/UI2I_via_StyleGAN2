@@ -40,7 +40,8 @@ eigvec.requires_grad = False
 
 factor_path = args.fact
 item = torch.load(factor_path)
-print("###next(iter(item.values())):",next(iter(item.values())))
+print("1.item:",item)
+print("2.item.values():",item.values())
 vec = next(iter(item.values()))['weight'].to(device)
 input_latent = torch.mm(vec, eigvec) 
 
