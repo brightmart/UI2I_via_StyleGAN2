@@ -17,7 +17,6 @@ import lpips
 from model import Generator
 import random
 import sys
-import pickle
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--fact", type=str, required=True)
@@ -44,9 +43,8 @@ item = torch.load(factor_path)
 print("1.item:",item)
 print("2.item.values():",item.values())
 
-# a = ...
-pickle.dump(item.values(), open('/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2/item_temp.pkl', 'wb'))
-vec = next(iter(item.values()))['weight'].to(device) # weight
+#np.save(item, open('/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2/item_temp.pkl', 'wb'))
+vec = next(iter(item.keys()))['weight'].to(device) # weight next(iter(item.values()))['weight'].to(device)
 input_latent = torch.mm(vec, eigvec) 
 
 def noise_normalize_(noises):
