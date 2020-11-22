@@ -42,7 +42,7 @@ factor_path = args.fact
 item = torch.load(factor_path)
 print("1.item:",item)
 print("2.item.values():",item.values())
-vec = next(iter(item.values()))['weight'].to(device)
+vec = next(iter(item.values()))['/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2/000000.pt'].to(device) # weight
 input_latent = torch.mm(vec, eigvec) 
 
 def noise_normalize_(noises):
