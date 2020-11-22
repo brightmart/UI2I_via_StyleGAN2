@@ -44,7 +44,9 @@ print("1.item:",item)
 print("2.item.values():",item.values())
 
 #np.save(item, open('/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2/item_temp.pkl', 'wb'))
-vec = next(iter(item.keys()))['weight'].to(device) # weight next(iter(item.values()))['weight'].to(device)
+vec = next(iter(item.values()))
+print("vec:",type(vec))
+#['weight'].to(device) # weight next(iter(item.values()))['weight'].to(device)
 input_latent = torch.mm(vec, eigvec) 
 
 def noise_normalize_(noises):
