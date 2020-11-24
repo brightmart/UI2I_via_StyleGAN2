@@ -423,16 +423,16 @@ if __name__ == "__main__":
         except ValueError:
             pass
 
-        generator.load_state_dict(ckpt["g"],strict=True)
-        discriminator.load_state_dict(ckpt["d"],strict=True)
-        g_ema.load_state_dict(ckpt["g_ema"],strict=True)
+        generator.load_state_dict(ckpt["g"],strict=False)
+        discriminator.load_state_dict(ckpt["d"],strict=False)
+        g_ema.load_state_dict(ckpt["g_ema"],strict=False)
 
         for name, param in g_ema.named_parameters():
             if param.requires_grad and 'style' in name:
                 param.requires_grad = False
 
-        g_optim.load_state_dict(ckpt["g_optim"],strict=True)
-        d_optim.load_state_dict(ckpt["d_optim"],strict=True)
+        g_optim.load_state_dict(ckpt["g_optim"],strict=False)
+        d_optim.load_state_dict(ckpt["d_optim"],strict=False)
 
     if args.distributed:
         generator = nn.parallel.DistributedDataParallel(
