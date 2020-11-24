@@ -40,8 +40,8 @@ eigvec.requires_grad = False
 
 factor_path = args.fact
 item = torch.load(factor_path)
-print("1.item:",item)
-print("2.item.values():",item.values())
+# print("1.item:",item)
+# print("2.item.values():",item.values())
 
 #np.save(item, open('/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2/item_temp.pkl', 'wb'))
 vec = dict(next(iter(item.values())))['weight'].to(device) # weight next(iter(item.values()))['weight'].to(device)
