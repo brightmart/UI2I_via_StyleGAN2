@@ -316,7 +316,7 @@ def train(args, loader, generator, discriminator, g_optim, d_optim, g_ema, devic
                     try:
                         utils.save_image(
                             sample,
-                            f"/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2/{str(i).zfill(6)}.png", # sample
+                            f"/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2-2/{str(i).zfill(6)}.png", # sample
                             nrow=int(args.n_sample ** 0.5),
                             normalize=True,
                             range=(-1, 1),
@@ -337,7 +337,7 @@ def train(args, loader, generator, discriminator, g_optim, d_optim, g_ema, devic
                             "args": args,
                             "ada_aug_p": ada_aug_p,
                         },
-                        f"/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2/{str(i).zfill(6)}.pt", # checkpoint/xxx
+                        f"/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2-2/{str(i).zfill(6)}.pt", # checkpoint/xxx
                       )
                 except Exception as e:
                         print("save checkpoint.error occur"+str(e))
