@@ -431,8 +431,8 @@ if __name__ == "__main__":
             if param.requires_grad and 'style' in name:
                 param.requires_grad = False
 
-        g_optim.load_state_dict(ckpt["g_optim"],strict=False)
-        d_optim.load_state_dict(ckpt["d_optim"],strict=False)
+        g_optim.load_state_dict(ckpt["g_optim"])
+        d_optim.load_state_dict(ckpt["d_optim"])
 
     if args.distributed:
         generator = nn.parallel.DistributedDataParallel(
