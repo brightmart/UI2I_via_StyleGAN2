@@ -325,7 +325,7 @@ def train(args, loader, generator, discriminator, g_optim, d_optim, g_ema, devic
                         print("save image. error occur"+str(e))
                         pass
 
-            if i % 10000 == 0:
+            if i % 1000 == 0:
                 try:
                     torch.save(
                         {
