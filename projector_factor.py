@@ -13,7 +13,6 @@ from utils import AddPepperNoise
 import lpips
 from model import Generator
 
-factor_base_path='./models/'
 #torch.manual_seed(111)
 
 def noise_regularize(noises):
@@ -216,6 +215,10 @@ def projector_factor_fn(ckpt,fact,files):
     img_ar = make_image(img_gen)
 
     result_file = {}
+
+    # factor_base_path_1 = './models/'
+    factor_base_path_1 = '"/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2-2/deploy/'
+
     for i, input_name in enumerate(files): # args.files
         noise_single = []
         for noise in noises:
@@ -230,10 +233,11 @@ def projector_factor_fn(ckpt,fact,files):
 
         img_name = os.path.splitext(os.path.basename(input_name))[0] + "-project.png"
         pil_img = Image.fromarray(img_ar[i])
-        save_latent_image_path= factor_base_path + img_name
+
+        save_latent_image_path= factor_base_path_1 + img_name
         pil_img.save(save_latent_image_path)  # add factor_base_path
 
-    save_latent_code_path=factor_base_path + filename
+    save_latent_code_path=factor_base_path_1 + filename
     torch.save(result_file,save_latent_code_path)  # factor_base_path
     return save_latent_image_path, save_latent_code_path
 
