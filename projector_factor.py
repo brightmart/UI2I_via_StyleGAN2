@@ -14,6 +14,8 @@ import lpips
 from model import Generator
 
 #torch.manual_seed(111)
+factor_base_path = '"/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2-2/deploy/'
+
 
 def noise_regularize(noises):
     loss = 0
@@ -217,7 +219,6 @@ def projector_factor_fn(ckpt,fact,files):
     result_file = {}
 
     # factor_base_path_1 = './models/'
-    factor_base_path = '"/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2-2/deploy/'
 
     for i, input_name in enumerate(files): # args.files
         noise_single = []
