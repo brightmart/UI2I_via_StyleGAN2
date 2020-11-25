@@ -217,7 +217,7 @@ def projector_factor_fn(ckpt,fact,files):
     result_file = {}
 
     # factor_base_path_1 = './models/'
-    factor_base_path_1 = '"/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2-2/deploy/'
+    factor_base_path = '"/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2-2/deploy/'
 
     for i, input_name in enumerate(files): # args.files
         noise_single = []
@@ -234,10 +234,10 @@ def projector_factor_fn(ckpt,fact,files):
         img_name = os.path.splitext(os.path.basename(input_name))[0] + "-project.png"
         pil_img = Image.fromarray(img_ar[i])
 
-        save_latent_image_path= factor_base_path_1 + img_name
+        save_latent_image_path= factor_base_path + img_name
         pil_img.save(save_latent_image_path)  # add factor_base_path
 
-    save_latent_code_path=factor_base_path_1 + filename
+    save_latent_code_path=factor_base_path + filename
     torch.save(result_file,save_latent_code_path)  # factor_base_path
     return save_latent_image_path, save_latent_code_path
 
