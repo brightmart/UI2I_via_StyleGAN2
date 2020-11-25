@@ -14,7 +14,7 @@ import lpips
 from model import Generator
 
 #torch.manual_seed(111)
-factor_base_path = '"/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2-2/deploy/'
+factor_base_path = "/content/drive/My Drive/Colab Notebooks/I2I_StyleGAN2-2/deploy/"
 
 
 def noise_regularize(noises):
